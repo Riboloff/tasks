@@ -24,6 +24,30 @@ def isUniqueStringWithoutAddStruct(str):
 
     return 1
 
-for str in ['asdf', 'aa', '']:
-    print str, isUniqueString(str)
-    print str, isUniqueStringWithoutAddStruct(str)
+#to definition is a per,utation of the other
+def isPermutation(str1, str2):
+    dict = {}
+    for char in str1:
+        dict[char] = dict.get(char, 0) + 1
+
+    for char in str2:
+        if (dict.get(char)):
+            dict[char] = dict.get(char, 0) - 1
+            if (dict.get(char) == 0):
+                del dict[char]
+        else:
+            return 0
+
+    if (dict.keys()):
+        return 0
+
+    return 1
+
+
+#for str in ['asdf', 'aa', '']:
+    #print str, isUniqueString(str)
+    #print str, isUniqueStringWithoutAddStruct(str)
+
+
+for str1, str2 in [('asdf', 'asfd'), ('aab', 'abb'), ('aaa', 'aaa'), ('', ''), ('11', '12')]:
+    print str1, str2, isPermutation(str1, str2)
