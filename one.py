@@ -43,11 +43,27 @@ def isPermutation(str1, str2):
 
     return 1
 
+#palindrome
+def isPalindrome(str):
+    dict = {}
+    countOdd = 0
+    for char in str:
+        dict[char] = dict.get(char, 0) + 1
+        if (dict.get(char, 0) % 2 == 1):
+            countOdd += 1 
+        else:
+            countOdd -= 1
+
+    return countOdd <= 1
+
 
 #for str in ['asdf', 'aa', '']:
     #print str, isUniqueString(str)
     #print str, isUniqueStringWithoutAddStruct(str)
 
 
-for str1, str2 in [('asdf', 'asfd'), ('aab', 'abb'), ('aaa', 'aaa'), ('', ''), ('11', '12')]:
-    print str1, str2, isPermutation(str1, str2)
+#for str1, str2 in [('asdf', 'asfd'), ('aab', 'abb'), ('aaa', 'aaa'), ('', ''), ('11', '12')]:
+#    print str1, str2, isPermutation(str1, str2)
+
+for str in ['aabb', 'abb', 'bbaaa', 'acaca', 'aaaddd', 'werrewqqav']:
+    print str, isPalindrome(str)
