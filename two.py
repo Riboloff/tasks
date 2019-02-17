@@ -23,7 +23,7 @@ class LinledList:
 
 
     #2.1 Remove Dups: Write code to remove duplicates from an unsorted linked list.
-    #without temp buffer 
+    #without temp buffer
     def removeDups(self):
         current = self.head
         while (current is not None):
@@ -78,7 +78,28 @@ class LinledList:
 
         return out.data
 
-        
+    def deleteMidle(self):
+        current = duble = self.head
+        if (
+            current is None
+            or current.next is None
+            or current.next.next is None
+        ):
+            return
+
+        duble=duble.next
+        duble=duble.next
+        while (duble.next is not None and duble.next.next is not None):
+            duble=duble.next
+            duble=duble.next
+            current=current.next
+
+        if (current.next.next is None):
+            current.next = None
+        else:
+            current.next = current.next.next
+
+
 
 list1 = LinledList()
 list1.head = Node('one')
@@ -97,6 +118,8 @@ list1.addNode('five')
 list1.addNode('two')
 list1.addNode('four')
 list1.addNode('four')
+list1.addNode('six')
+list1.addNode('seven')
 
 
 list1.output()
@@ -113,6 +136,20 @@ print '0 ', list1.kToLast(0)
 print '6 ', list1.kToLast(6)
 print '-1 ', list1.kToLast(-1)
 #print list1.kToLast(0)
+
+list2 = LinledList()
+list2.head = Node('one')
+list2.addNode('two')
+list2.addNode('three')
+list2.addNode('four')
+list2.addNode('five')
+list2.addNode('six')
+list2.addNode('seven')
+print "=========delete Midle:"
+list2.output()
+print "-----";
+list2.deleteMidle()
+list2.output()
 
 
 
