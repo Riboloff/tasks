@@ -97,6 +97,35 @@ class SimpleStack:
     def _min(self):
         return self.min
 
+class MyQueue:
+    def __init__(self):
+        self.info = [SimpleStack(), SimpleStack()]
+
+    def push(self, value):
+        s = self.info[0]
+        s.push(value)
+
+    def pop(self):
+        s = self.info[1]
+        value = s.pop()
+        if value is None:
+            self.shift()
+            value = s.pop()
+
+        return value
+
+
+    def shift(self):
+        s0 = self.info[0]
+        s1 = self.info[1]
+
+        i = s0.pop()
+        while (i is not None):
+            s1.push(i)
+            i = s0.pop()
+
+        return
+
 
 print '===========3.1.MultiStack========'
 ms = MultiStack(2)
@@ -160,3 +189,25 @@ s.push(4)
 s.push(3)
 s.out()
 print "min=", s._min()
+
+
+print '=======3.4 Queue using two stacks'
+q = MyQueue()
+q.push(1);
+q.push(2);
+q.push(3);
+print q.pop();
+print q.pop();
+print q.pop();
+print q.pop();
+print q.pop();
+q.push(1);
+q.push(2);
+q.push(3);
+print q.pop();
+print q.pop();
+q.push(4);
+q.push(5);
+print q.pop();
+print q.pop();
+print q.pop();
